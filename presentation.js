@@ -3,6 +3,7 @@
   let brand, items,category = []; // GLOBAL ITEM NAME
   const MySrp = 0.60;
   let rPRICE = 0;
+  let promomsg ='';
 
   let masterPermit = [];
   let GetToken, ACCESS_TOKEN = '';
@@ -211,10 +212,28 @@
 // getJSONitems();
 
 
+function getPromotxt(){
+    //ORIGINAL ITEM
+ const dropboxUrl ="https://dl.dropboxusercontent.com/scl/fi/7e07h5jar419g6f7mvmm1/Promotxt.json?rlkey=l2rl9vm00zk5i8mfu3d9ejlbr&st=aqk14007&dl=0"
+    fetch(dropboxUrl)
+      .then(response => response.json())
+      .then(jsonData => {
+        let jsonData1=JSON.parse(JSON.stringify(jsonData));
+        promomsg = jsonData1[0].promo;
+        
+        document.querySelector('.base-txt').innerText= promomsg;
+        console.log("json string ",promomsg,jsonData1)    // console.log("JSON Data:", jsonData);
+      })
+      .catch(error => console.error("Error fetching JSON:", error));
+}
+
+ getPromotxt()
 function getJSONitems(){
-    //const dropboxUrl ='https://dl.dropboxusercontent.com/scl/fi/998tf3rypwb4kidt396d8/items.json?rlkey=h4gebw2odff7tbktvs9ki64sl&st=fccps9wz&raw=1';
-    const dropboxUrl ="https://dl.dropboxusercontent.com/scl/fi/998tf3rypwb4kidt396d8/items.json?rlkey=h4gebw2odff7tbktvs9ki64sl&st=htups6st&raw=1"
-    //https://www.dropbox.com/scl/fi/998tf3rypwb4kidt396d8/items.json?rlkey=h4gebw2odff7tbktvs9ki64sl&st=zlgmpg0k&dl=0
+    //ORIGINAL ITEM
+ const dropboxUrl ="https://dl.dropboxusercontent.com/scl/fi/998tf3rypwb4kidt396d8/items.json?rlkey=h4gebw2odff7tbktvs9ki64sl&st=htups6st&raw=1"
+  
+    //TEMPORAY ITEMS
+ // const dropboxUrl = 'https://dl.dropboxusercontent.com/scl/fi/ueosrbyx67b53c2rjd6le/item4.json?rlkey=ftm8b07i4c6k0zxnamd9cz732&st=6x81c3g7&dl=0'
 
     fetch(dropboxUrl)
       .then(response => response.json())
@@ -278,7 +297,9 @@ const myimage = document.querySelector(".image");
                         const formatted = retailPrice(Math.round( (data1.price * rPRICE)/5)*5);                     
                         row.className='boxes'
                         row.dataset.index = index; 
+                        // row.dataset.index = index;  
                         row.style.borderColor=`${data1.active ? "black":"red"}`;
+                        row.style.borderColor=`${data1.deletion ? "orange" : '${data1.active ? "black":"red"'}`;
                         row.innerHTML = `<img src=${data1.photo}>
                         <p>PART NO: ${data1.partno}
                         <br>BRAND: ${data1.brand} <br> <span style="color:blue; font-weight:bold; background-color:white">PRICE: ${formatted} </span> <br>  ${data1.desrip} </p> `
@@ -296,7 +317,18 @@ const myimage = document.querySelector(".image");
                                           document.getElementById('p3').innerText= `DESCRIPTION : ${description}`; 
                                           document.getElementById('p4').innerText= `CATEGORY : ${data1.category}`; 
                                           document.getElementById("p5").innerText =`AVAILABLE : ${data1.active ? "YES":"NO"}`;
-                                          document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;                                           
+                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? "SALE ITEM":"REGULAR"}`;
+                                          document.getElementById("p51").style.color =`${data1.deletion ? "blue":"black"}`;  
+                                          document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;  
+                                          document.getElementById("p6").innerText = `PROMO :  ${data1.promo}`;
+                                          if(data1.promo.length === 0) 
+                                                document.getElementById("p6").style.display = "none";
+                                            else {
+                                                document.getElementById("p6").style.display = "block";
+                                                document.getElementById("p6").style.color = "blue";
+                                            }
+                                         
+                                                                               
                          });
                         myimage.appendChild(row);   
                    
@@ -332,6 +364,7 @@ const myimage = document.querySelector(".image");
                         row.className='boxes'
                         row.dataset.index = index; 
                         row.style.borderColor=`${data1.active ? "black":"red"}`;
+                        row.style.borderColor=`${data1.deletion ? "orange" : '${data1.active ? "black":"red"'}`;
                         row.innerHTML = `<img src=${data1.photo}>
                         <p>PART NO: ${data1.partno}
                         <br>BRAND: ${data1.brand} <br> <span style="color:blue; font-weight:bold; background-color:white">PRICE: ${formatted} </span> <br>  ${data1.desrip} </p> `
@@ -348,8 +381,17 @@ const myimage = document.querySelector(".image");
                                           document.getElementById('p3').innerText= `DESCRIPTION : ${description}`; 
                                           document.getElementById('p4').innerText= `CATEGORY : ${data1.category}`; 
                                           document.getElementById("p5").innerText =`AVAILABLE : ${data1.active ? "YES":"NO"}`; 
+                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? "SALE ITEM":"REGULAR"}`;
+                                          document.getElementById("p51").style.color =`${data1.deletion ? "blue":"black"}`;  
+                                                                                   
                                           document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;
-  
+                                          document.getElementById("p6").innerText = `PROMO :  ${data1.promo}`;
+                                            if(data1.promo.length === 0) 
+                                                document.getElementById("p6").style.display = "none"
+                                            else {
+                                                document.getElementById("p6").style.display = "block";
+                                                document.getElementById("p6").style.color = "blue";
+                                            }
                                          });
                         myimage.appendChild(row);   
                    
@@ -397,6 +439,7 @@ const myimage = document.querySelector(".image");
                         const formatted = retailPrice(Math.round( (data1.price * rPRICE)/5)*5);                    
                         row.dataset.index = index;
                         row.style.borderColor=`${data1.active ? "black":"red"}`; 
+                        row.style.borderColor=`${data1.deletion ? "orange" : '${data1.active ? "black":"red"'}`;
                         row.innerHTML = `<img src=${data1.photo}>
                         <p>PART NO: ${data1.partno}
                         <br>BRAND: ${data1.brand} <br> <span style="color:blue; font-weight:bold; background-color:white">PRICE: ${formatted} </span> <br>  ${data1.desrip} </p> `
@@ -413,7 +456,17 @@ const myimage = document.querySelector(".image");
                                           document.getElementById('p3').innerText= `DESCRIPTION : ${description}`; 
                                           document.getElementById('p4').innerText= `CATEGORY : ${data1.category}`; 
                                           document.getElementById("p5").innerText =`AVAILABLE : ${data1.active ? "YES":"NO"}`;   
-                                          document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;                                                                                      
+                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? "SALE ITEM":"REGULAR"}`;
+                                          document.getElementById("p51").style.color =`${data1.deletion ? "blue":"black"}`;  
+                                           
+                                          document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;   
+                                          document.getElementById("p6").innerText = `PROMO :  ${data1.promo}`;    
+                                          if(data1.promo.length === 0) 
+                                                document.getElementById("p6").style.display = "none"
+                                            else {
+                                                document.getElementById("p6").style.display = "block";
+                                                document.getElementById("p6").style.color = "blue";
+                                            }                                                                                                                  
                                 })
                        myimage.appendChild(row);     
                 }

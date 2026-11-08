@@ -23,7 +23,6 @@
     font-family: var(--myfont);
     /* background: rgb(255, 5, 5); */
     overflow-y: auto;
-
 }
 .navbar-1{  
      display: flex;
@@ -57,14 +56,14 @@
     outline: none;
     border: none;
     border-radius: 0px;
-    padding-left: 0.5em;
+    padding-left: 0.3em;
     margin-left: 1%;
-    font-size: 40px;
-    width: 35dvw; 
+    /* font-size: 40px; */
+    /* font-size: clamp(40px, 2dvw, 2rem) ; */
+    width: 31dvw; 
     height: 5dvh ;  
     background-color: white
 }
-
 
 .nav-input .fa-solid{
     border-radius: 50%;
@@ -264,6 +263,7 @@
      width: 100%;   
     /* background-color: rgb(197, 17, 17); */
     border-radius: 5px;
+    background: #dcdcd2; 
 }
 .alert-box {
     font-size: 8px;
@@ -303,9 +303,15 @@
     font-size: 2.5dvw;
     font-weight: 500 ;
 }
-#p4,#p5{
+#p4,#p6{
     font-size: 2.6dvw;
     font-weight: 500 ;
+}
+
+#p5, #p51{
+    font-size: 2.6dvw;
+    font-weight: 500 ;
+    /* background-color: rgb(165, 162, 162); */
 }
 .center-Btn{
     display: flex;
@@ -313,10 +319,11 @@
      background-color: rgb(165, 162, 162);
 }
 .close-btn {
-    margin-top: 3px;
+    /* margin-top: 3px; */
     padding: 5px 5px;
     cursor: pointer;
     color: white;
+    border: none;
     background-color: rgb(42, 37, 42);
 }   
 .close-btn:hover {
@@ -377,7 +384,8 @@
         } */
         input[type="text"],
         input[type="email"], input{
-            font-size: 2.5dvw;
+            /* font-size: 2.5dvw; */
+            font-size: clamp(16px, 2.5dvw,2rem);
             background-color: white;
         }
 
@@ -386,3 +394,47 @@
             flex-direction: column;
             background-color: white;
         }
+/* #base{
+    bottom: 0;
+    position: absolute;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 3dvh;
+    overflow: hidden;
+    background-color: black;
+    font-size: clamp(8px, 2dvw, 2rem);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    animation: scroll-left 10s linear infinite;
+} */
+
+       #base{
+            bottom: 0;
+            position: absolute;
+            width: 100dvw;
+            height: clamp(16px,4dvh,3rem);
+            /* margin-left: 0px 10px; */
+            overflow: hidden; /* Hides the text when it goes off-screen */
+            background-color: black;
+            white-space: nowrap;
+            color: white;
+            font-family: sans-serif;
+            
+        }
+        .base-txt{
+           font-size: clamp(13px, 2dvw, 2rem);
+            display: inline-block;
+            background-color: black;
+            animation: scroll-left 10s linear infinite;
+        }
+      
+    @keyframes scroll-left {
+        from {
+           transform: translateX(100dvw); /* Start completely off-screen to the right */
+        }
+        to {
+            transform: translateX(-100%); /* Finish completely off-screen to the left */
+        }
+    }

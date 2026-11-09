@@ -429,7 +429,7 @@
            font-size: clamp(13px, 2dvw, 2rem);
             display: inline-block;
             background-color: black;
-            animation: scroll-left 10s linear infinite;
+            animation: scroll-left 20s linear infinite;
         }
       
     @keyframes scroll-left {

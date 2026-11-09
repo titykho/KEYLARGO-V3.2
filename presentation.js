@@ -1,4 +1,5 @@
 
+
   let brand, items,category = []; // GLOBAL ITEM NAME
   const MySrp = 0.60;
   let rPRICE = 0;
@@ -298,7 +299,7 @@ const myimage = document.querySelector(".image");
                         row.dataset.index = index; 
                         // row.dataset.index = index;  
                         row.style.borderColor=`${data1.active ? "black":"red"}`;
-                        row.style.borderColor=`${data1.deletion ? "orange" : '${data1.active ? "black":"red"'}`;
+                        row.style.borderColor=`${data1.deletion ? "orange" : `${data1.active ? "black":"red"}`}`;
                         row.innerHTML = `<img src=${data1.photo}>
                         <p>PART NO: ${data1.partno}
                         <br>BRAND: ${data1.brand} <br> <span style="color:blue; font-weight:bold; background-color:white">PRICE: ${formatted} </span> <br>  ${data1.desrip} </p> `
@@ -316,7 +317,7 @@ const myimage = document.querySelector(".image");
                                           document.getElementById('p3').innerText= `DESCRIPTION : ${description}`; 
                                           document.getElementById('p4').innerText= `CATEGORY : ${data1.category}`; 
                                           document.getElementById("p5").innerText =`AVAILABLE : ${data1.active ? "YES":"NO"}`;
-                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? "SALE ITEM":"REGULAR"}`;
+                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? `${data1.active ? "SALE ITEM":"DISCONTINUE"}` :"REGULAR" }`;
                                           document.getElementById("p51").style.color =`${data1.deletion ? "blue":"black"}`;  
                                           document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;  
                                           document.getElementById("p6").innerText = `PROMO :  ${data1.promo}`;
@@ -363,7 +364,7 @@ const myimage = document.querySelector(".image");
                         row.className='boxes'
                         row.dataset.index = index; 
                         row.style.borderColor=`${data1.active ? "black":"red"}`;
-                        row.style.borderColor=`${data1.deletion ? "orange" : '${data1.active ? "black":"red"'}`;
+                        row.style.borderColor=`${data1.deletion ? "orange" : `${data1.active ? "black":"red"}`}`;
                         row.innerHTML = `<img src=${data1.photo}>
                         <p>PART NO: ${data1.partno}
                         <br>BRAND: ${data1.brand} <br> <span style="color:blue; font-weight:bold; background-color:white">PRICE: ${formatted} </span> <br>  ${data1.desrip} </p> `
@@ -380,7 +381,7 @@ const myimage = document.querySelector(".image");
                                           document.getElementById('p3').innerText= `DESCRIPTION : ${description}`; 
                                           document.getElementById('p4').innerText= `CATEGORY : ${data1.category}`; 
                                           document.getElementById("p5").innerText =`AVAILABLE : ${data1.active ? "YES":"NO"}`; 
-                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? "SALE ITEM":"REGULAR"}`;
+                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? `${data1.active ? "SALE ITEM":"DISCONTINUE"}` :"REGULAR" }`;
                                           document.getElementById("p51").style.color =`${data1.deletion ? "blue":"black"}`;  
                                                                                    
                                           document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;
@@ -438,7 +439,7 @@ const myimage = document.querySelector(".image");
                         const formatted = retailPrice(Math.round( (data1.price * rPRICE)/5)*5);                    
                         row.dataset.index = index;
                         row.style.borderColor=`${data1.active ? "black":"red"}`; 
-                        row.style.borderColor=`${data1.deletion ? "orange" : '${data1.active ? "black":"red"'}`;
+                        row.style.borderColor=`${data1.deletion ? "orange" : `${data1.active ? "black":"red"}`}`;
                         row.innerHTML = `<img src=${data1.photo}>
                         <p>PART NO: ${data1.partno}
                         <br>BRAND: ${data1.brand} <br> <span style="color:blue; font-weight:bold; background-color:white">PRICE: ${formatted} </span> <br>  ${data1.desrip} </p> `
@@ -455,7 +456,7 @@ const myimage = document.querySelector(".image");
                                           document.getElementById('p3').innerText= `DESCRIPTION : ${description}`; 
                                           document.getElementById('p4').innerText= `CATEGORY : ${data1.category}`; 
                                           document.getElementById("p5").innerText =`AVAILABLE : ${data1.active ? "YES":"NO"}`;   
-                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? "SALE ITEM":"REGULAR"}`;
+                                          document.getElementById("p51").innerText =`   STATUS : ${data1.deletion ? `${data1.active ? "SALE ITEM":"DISCONTINUE"}` :"REGULAR" }`;
                                           document.getElementById("p51").style.color =`${data1.deletion ? "blue":"black"}`;  
                                            
                                           document.getElementById("p5").style.color =`${data1.active ? "black":"red"}`;   

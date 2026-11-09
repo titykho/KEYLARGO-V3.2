@@ -316,14 +316,16 @@
 .center-Btn{
     display: flex;
     justify-content: center;
+    padding: 4px;
      background-color: rgb(165, 162, 162);
 }
 .close-btn {
     /* margin-top: 3px; */
-    padding: 5px 5px;
+    padding: 5px 10px;
     cursor: pointer;
     color: white;
     border: none;
+    border-radius: 10px;
     background-color: rgb(42, 37, 42);
 }   
 .close-btn:hover {

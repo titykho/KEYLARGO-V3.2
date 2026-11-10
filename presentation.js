@@ -294,7 +294,7 @@ const myimage = document.querySelector(".image");
         data1.forEach((data1, index) => {             
                if(data1.partno.toUpperCase().includes(LookItem) || data1.desrip.toUpperCase().includes(LookItem)){
                         const row = document.createElement("div");
-                        const formatted = retailPrice(Math.round( (data1.price * rPRICE)/5)*5);                     
+                        const formatted = retailPrice(Math.round( (data1.price * rPRICE)));                     
                         row.className='boxes'
                         row.dataset.index = index; 
                         // row.dataset.index = index;  
@@ -306,7 +306,7 @@ const myimage = document.querySelector(".image");
 
                         row.addEventListener("click", function() {  
                                       let  nsrp = con_price(Math.round((data1.price / MySrp)/5)*5); 
-                                      let xprice =con_price(Math.round( (data1.price * rPRICE)/5)*5);                                   
+                                      let xprice =con_price(Math.round( (data1.price * rPRICE)));                                   
 
                                       const description = capitalizeWords(data1.desrip);
                                           document.getElementById('customAlert').style.display = 'block';
@@ -359,7 +359,7 @@ const myimage = document.querySelector(".image");
         data1.forEach((data1, index) => {             
                if(data1.brand.includes(LookItem)){
                         const row = document.createElement("div");
-                        const formatted = retailPrice(Math.round( (data1.price * rPRICE)/5)*5);
+                        const formatted = retailPrice(Math.round( (data1.price * rPRICE)));
 
                         row.className='boxes'
                         row.dataset.index = index; 
@@ -371,7 +371,7 @@ const myimage = document.querySelector(".image");
 
                         row.addEventListener("click", function() {
                                       let  nsrp = con_price(Math.round((data1.price / MySrp)/5)*5); 
-                                      let xprice =con_price(Math.round( (data1.price * rPRICE)/5)*5);
+                                      let xprice =con_price(Math.round( (data1.price * rPRICE)));
                                       const description = capitalizeWords(data1.desrip);
                                           document.getElementById('customAlert').style.display = 'block';
                                           document.getElementById("photoimg").src = data1.photo+'&sz=s1500';
@@ -436,7 +436,7 @@ const myimage = document.querySelector(".image");
                if(data1.category.includes(LookItem)){
                         const row = document.createElement("div");
                         row.className='boxes'
-                        const formatted = retailPrice(Math.round( (data1.price * rPRICE)/5)*5);                    
+                        const formatted = retailPrice(Math.round( (data1.price * rPRICE)));                    
                         row.dataset.index = index;
                         row.style.borderColor=`${data1.active ? "black":"red"}`; 
                         row.style.borderColor=`${data1.deletion ? "orange" : `${data1.active ? "black":"red"}`}`;
@@ -446,7 +446,7 @@ const myimage = document.querySelector(".image");
 
                         row.addEventListener("click", function() {
                                       let  nsrp = con_price(Math.round((data1.price / MySrp)/5)*5); 
-                                      let xprice =con_price(Math.round( (data1.price * rPRICE)/5)*5);                                   
+                                      let xprice =con_price(Math.round( (data1.price * rPRICE)));                                   
                                       const description = capitalizeWords(data1.desrip);
                                           document.getElementById('customAlert').style.display = 'block';
                                           document.getElementById("photoimg").src = data1.photo+'&sz=s1500';
